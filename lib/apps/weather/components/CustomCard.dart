@@ -6,16 +6,17 @@ import 'package:provider/provider.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard(
-      {Key? key, required WeatherModel weather, required this.direction})
-      : super(key: key);
+      {super.key, required WeatherModel weather, required this.direction});
+
   final String direction;
 
   @override
   Widget build(BuildContext context) {
     Axis flexDirection =
         direction == 'column' ? Axis.vertical : Axis.horizontal;
-    WeatherModel weather = Provider.of<WeatherProvider>(context).currentWeather;
-    print(weather.temperature);
+
+    WeatherProvider weather = context.watch<WeatherProvider>();
+/*     print(weather.temperature); */
     return IntrinsicWidth(
       child: Container(
         margin: EdgeInsets.all(18.0),
@@ -41,17 +42,16 @@ class CustomCard extends StatelessWidget {
                   icon: const Icon(Icons.refresh_sharp),
                   color: Colors.white,
                   onPressed: () {
-                    Provider.of<WeatherProvider>(context, listen: false)
-                        .fetchWeatherData();
+                    context.read<WeatherProvider>().fetchWeatherData();
                   },
                 ),
               ],
             ),
             WeatherDisplay(
-              icon: weather.icon,
-              temperature: weather.temperature,
-              dayState: weather.dayState,
-              weatherStatus: weather.weatherStatus,
+              icon: weather.currentWeather.icon,
+              temperature: weather.currentWeather.temperature,
+              dayState: weather.currentWeather.dayState,
+              weatherStatus: weather.currentWeather.weatherStatus,
             ),
             SizedBox(height: 18),
           ],
