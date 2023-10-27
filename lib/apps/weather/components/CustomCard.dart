@@ -40,7 +40,10 @@ class CustomCard extends StatelessWidget {
                   splashColor: Colors.transparent,
                   icon: const Icon(Icons.refresh_sharp),
                   color: Colors.white,
-                  onPressed: () {},
+                  onPressed: () {
+                    Provider.of<WeatherProvider>(context, listen: false)
+                        .fetchWeatherData();
+                  },
                 ),
               ],
             ),
