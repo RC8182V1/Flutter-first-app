@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class WeatherModel {
-  final IconData icon;
+  final Image icon;
   final double temperature; 
   final String dayState;
   final String weatherStatus;
@@ -15,7 +15,7 @@ class WeatherModel {
 
   static WeatherModel empty() {
     return WeatherModel(
-      icon: Icons.error,
+      icon: Image.asset('lib/Icons/dia/soleado.png', width: 40, height: 40),
       temperature: 0.0,
       dayState: 'N/A',
       weatherStatus: 'N/A',

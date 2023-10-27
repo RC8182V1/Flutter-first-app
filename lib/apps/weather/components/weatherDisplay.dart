@@ -9,7 +9,7 @@ class WeatherDisplay extends StatelessWidget {
     required this.weatherStatus,
   }) : super(key: key);
 
-  final IconData icon;
+  final Image icon;
   final double temperature;
   final String dayState;
   final String weatherStatus;
@@ -20,7 +20,7 @@ class WeatherDisplay extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 18.0),
       child: Row(
         children: [
-          Icon(icon, color: Colors.white),
+          Image.asset('lib/Icons/dia/soleado.png', width: 40, height: 40),
           SizedBox(width: 18),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

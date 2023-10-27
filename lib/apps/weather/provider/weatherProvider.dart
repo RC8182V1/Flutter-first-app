@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class WeatherProvider extends ChangeNotifier {
-
   late WeatherModel _currentWeather = WeatherModel.empty();
   String url =
       'https://api.open-meteo.com/v1/forecast?latitude=28.05&longitude=-16.54&hourly=temperature_2m,weathercode,windspeed_10m,windgusts_10m,winddirection_10m,uv_index&models=gfs_global&current_weather=true&windspeed_unit=kn&timezone=Europe%2FLondon';
@@ -20,28 +19,29 @@ class WeatherProvider extends ChangeNotifier {
       int weatherCode = data['current_weather']['weathercode'];
       double temperature = data['current_weather']['temperature'];
       String weatherStatus;
-      IconData icon;
+      Image icon;
 
       switch (weatherCode) {
         case 0:
           weatherStatus = 'Clear';
-          icon = Icons.sunny;
+          icon =
+              Image.asset('lib/Icons/dia/soleado.png', width: 40, height: 40);
           break;
         case 1:
           weatherStatus = 'Cloudy';
-          icon = Icons.cloud;
+          //icon = Icons.cloud;
           break;
         case 2:
           weatherStatus = 'Light rain';
-          icon = Icons.shower;
+          // icon = Icons.shower;
           break;
         case 3:
           weatherStatus = 'Rain';
-          icon = Icons.shower;
+          // icon = Icons.shower;
           break;
         default:
           weatherStatus = 'Clear';
-          icon = Icons.sunny;
+        //  icon = Icons.sunny;
       }
 
       WeatherModel weather = WeatherModel(

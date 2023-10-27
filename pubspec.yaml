@@ -25,4 +25,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - lib/Icons/
+    - lib/Icons/dia/
+    - lib/Icons/noche/
