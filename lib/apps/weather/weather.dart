@@ -21,7 +21,6 @@ class Weather extends StatelessWidget {
         child: Column(children: [
           CustomCard(weather: currentWeather, direction: 'row'),
           CustomCard(weather: currentWeather, direction: 'column'),
-          Image.asset('lib/Icons/dia/soleado.png', width: 40, height: 40),
         ]),
       ),
     );

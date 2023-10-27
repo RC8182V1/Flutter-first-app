@@ -20,7 +20,7 @@ class WeatherDisplay extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 18.0),
       child: Row(
         children: [
-          Image.asset('lib/Icons/dia/soleado.png', width: 40, height: 40),
+          icon,
           SizedBox(width: 18),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -18,30 +18,50 @@ class WeatherProvider extends ChangeNotifier {
       String isDay = data['current_weather']['is_day'] == 1 ? 'Day' : 'Night';
       int weatherCode = data['current_weather']['weathercode'];
       double temperature = data['current_weather']['temperature'];
-      String weatherStatus;
-      Image icon;
+      String weatherStatus = 'Day';
+      Image icon = isDay == 'Day'
+          ? Image.asset('lib/Icons/day/clear-day.png', width: 40, height: 40)
+          : Image.asset('lib/Icons/night/clear-nigth.png',
+              width: 40, height: 40);
 
       switch (weatherCode) {
         case 0:
           weatherStatus = 'Clear';
-          icon =
-              Image.asset('lib/Icons/dia/soleado.png', width: 40, height: 40);
+          icon = isDay == 'Day'
+              ? Image.asset('lib/Icons/day/clear-day.png',
+                  width: 40, height: 40)
+              : Image.asset('lib/Icons/night/clear-nigth.png',
+                  width: 40, height: 40);
           break;
         case 1:
           weatherStatus = 'Cloudy';
-          //icon = Icons.cloud;
-          break;
+          icon = isDay == 'Day'
+              ? Image.asset('lib/Icons/day/claudy-day.png',
+                  width: 40, height: 40)
+              : Image.asset('lib/Icons/night/claudy-nigth.png',
+                  width: 40, height: 40);
         case 2:
           weatherStatus = 'Light rain';
-          // icon = Icons.shower;
+          icon = isDay == 'Day'
+              ? Image.asset('lib/Icons/day/raining-day.png',
+                  width: 40, height: 40)
+              : Image.asset('lib/Icons/night/raining-nigth.png',
+                  width: 40, height: 40);
           break;
         case 3:
-          weatherStatus = 'Rain';
-          // icon = Icons.shower;
+          weatherStatus = 'Rainy';
+          icon = isDay == 'Day'
+              ? Image.asset('lib/Icons/day/raining-day.png',
+                  width: 40, height: 40)
+              : Image.asset('lib/Icons/night/raining-nigth.png',
+                  width: 40, height: 40);
           break;
         default:
-          weatherStatus = 'Clear';
-        //  icon = Icons.sunny;
+          icon = isDay == 'Day'
+              ? Image.asset('lib/Icons/day/clear-day.png',
+                  width: 40, height: 40)
+              : Image.asset('lib/Icons/night/clear-nigth.png',
+                  width: 40, height: 40);
       }
 
       WeatherModel weather = WeatherModel(
