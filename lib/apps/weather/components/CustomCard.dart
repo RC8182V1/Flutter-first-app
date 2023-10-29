@@ -1,4 +1,3 @@
-import 'package:firstapp/apps/weather/models/weatherModel.dart';
 import 'package:flutter/material.dart';
 import 'package:firstapp/apps/weather/components/weatherDisplay.dart';
 import 'package:firstapp/apps/weather/provider/weatherProvider.dart';
@@ -6,7 +5,7 @@ import 'package:provider/provider.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard(
-      {super.key, required WeatherModel weather, required this.direction});
+      {super.key, required this.direction});
 
   final String direction;
 
@@ -16,7 +15,7 @@ class CustomCard extends StatelessWidget {
         direction == 'column' ? Axis.vertical : Axis.horizontal;
 
     WeatherProvider weather = context.watch<WeatherProvider>();
-/*     print(weather.temperature); */
+    print(weather.currentWeather.temperature);
     return IntrinsicWidth(
       child: Container(
         margin: EdgeInsets.all(18.0),
@@ -47,12 +46,8 @@ class CustomCard extends StatelessWidget {
                 ),
               ],
             ),
-            WeatherDisplay(
-              icon: weather.currentWeather.icon,
-              temperature: weather.currentWeather.temperature,
-              dayState: weather.currentWeather.dayState,
-              weatherStatus: weather.currentWeather.weatherStatus,
-            ),
+            WeatherDisplay()
+            ,
             SizedBox(height: 18),
           ],
         ),
